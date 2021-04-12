@@ -1,13 +1,8 @@
-const version = "miniml-pwa-v1"
-
 self.addEventListener('install', function(event) {
     event.waitUntil(
-        caches.open(version)
+        caches.open("minimal-pwa-v1")
             .then(cache => cache.addAll([
                 'index.html',
-                'main.js',
-                'style.css',
-                'icon16.png',
                 'icon192.png',
                 'icon196.png',
                 'icon512.png',
@@ -19,7 +14,7 @@ self.addEventListener('install', function(event) {
 self.addEventListener('fetch', function(event) {
     event.respondWith(
       caches
-        .open(version)
+        .open("minimal-pwa-v1")
         .then(function (cache) {
           return cache.match(event.request);
         })
